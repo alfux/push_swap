@@ -6,7 +6,7 @@
 #    By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 13:51:31 by afuchs            #+#    #+#              #
-#    Updated: 2022/05/19 14:25:03 by afuchs           ###   ########.fr        #
+#    Updated: 2022/05/23 14:50:42 by afuchs           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LPATH	= libft/
 
 HPATH	= header/
 
-SRC		= main.c operation.c
+SRC		= main.c operation.c checkint.c
 
 OBJ		= $(SRC:%.c=$(OPATH)%.o)
 

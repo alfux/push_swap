@@ -6,39 +6,73 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/20 15:27:24 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/05/23 15:15:37 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	printstk(t_stk *stk)
+static void	printstk(t_stk *stk)
 {
 	t_list	*buf;
 
 	buf = stk->frst;
 	while (buf)
 	{
-		ft_printf("%5s", (char *)buf->content);
+		ft_printf("%15i", *(int *)buf->content);
 		buf = buf->next;
 	}
+	ft_printf("\n");
 }
 
-t_stk	*getstk(int argc, char **argv)
+static int	*getints(int argc, char **argv)
+{
+	int	i;
+	int	j;
+	int	*tab;
+
+	tab = ft_calloc(argc - 1, sizeof (int));
+	if (!tab)
+		return (tab);
+	i = 0;
+	while (i < argc - 1)
+	{
+		*(tab + i) = ft_atoi(*(argv + i + 1));
+		j = 0;
+		while (j < i)
+		{
+			if (*(tab + j) == *(tab + i))
+			{
+				free(tab);
+				return ((void *)0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (tab);
+}
+
+static t_stk	*getstk(int size, int *tab)
 {
 	int		i;
 	t_stk	*stk;
 
-	i = 0;
+	i = -1;
 	stk = ft_calloc(1, sizeof (t_stk));
-	while (++i < argc)
+	if (!stk)
 	{
-		stk->last = ft_lstnew((char *)(*(argv + i)));
+		free(tab);
+		return (stk);
+	}
+	while (++i < size)
+	{
+		stk->last = ft_lstnew((int *)(tab + i));
 		ft_lstadd_back(&stk->frst, stk->last);
 	}
 	return (stk);
 }
 
-void	clrstk(t_stk *stk)
+static void	clrstk(t_stk *stk)
 {
 	ft_lstclear(&stk->frst, (void *)0);
 	stk->last = (void *)0;
@@ -47,47 +81,27 @@ void	clrstk(t_stk *stk)
 
 int	main(int argc, char **argv)
 {
-	t_stk	*a;
-	t_stk	*b;
-
-	b = ft_calloc(1, sizeof (t_stk));
-	a = getstk(argc, argv);
-	printstk(a);
-	ft_printf("\n");
-	printstk(b);
-	ft_printf("\n");
-	ft_printf("----SWAP----\n");
-	swpstk(a);
-	printstk(a);
-	ft_printf("\n");
-	printstk(b);
-	ft_printf("\n");
-	ft_printf("------------\n");
-	ft_printf("----PUSH----\n");
-	pshstk(a, b);
-	printstk(a);
-	ft_printf("\n");
-	printstk(b);
-	ft_printf("\n");
-	ft_printf("------------\n");
-	ft_printf("----ROTA----\n");
-	rotstk(a);
-	printstk(a);
-	ft_printf("\n");
-	printstk(b);
-	ft_printf("\n");
-	ft_printf("------------\n");
-	ft_printf("----RRTA----\n");
-	rrtstk(a);
-	pshstk(b, a);
-	rrtstk(a);
-	rrtstk(b);
-	printstk(a);
-	ft_printf("\n");
-	printstk(b);
-	ft_printf("\n");
-	ft_printf("------------\n");
-	clrstk(a);
-	clrstk(b);
+	int		*tab;
+	t_stk*	stk;
+	
+	if (argc < 2)
+		return (1);
+	if (!checkint(argc, argv))
+		return (ft_printf("Error\n"));
+	tab = getints(argc, argv);
+	if (!tab)
+		return (ft_printf("Error\n"));
+	stk = getstk(argc - 1, tab);
+	if (!stk)
+		return (ft_printf("Error\n"));
+	printstk(stk);
+	swpstk(stk);
+	printstk(stk);
+	rotstk(stk);
+	printstk(stk);
+	rrtstk(stk);
+	printstk(stk);
+	free(tab);
+	clrstk(stk);
 	return (0);
 }
