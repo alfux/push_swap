@@ -6,7 +6,7 @@
 #    By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 13:51:31 by afuchs            #+#    #+#              #
-#    Updated: 2022/05/23 14:50:42 by afuchs           ###   ########.fr        #
+#    Updated: 2022/05/24 14:36:06 by afuchs           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LPATH	= libft/
 
 HPATH	= header/
 
-SRC		= main.c operation.c checkint.c
+SRC		= main.c operation.c checkint.c sortblock.c
 
 OBJ		= $(SRC:%.c=$(OPATH)%.o)
 
@@ -32,11 +32,11 @@ NAME	= push_swap
 
 SIL		= --no-print-directory
 
-$(NAME)		:	$(OBJ) $(OPATH) $(LIB)
+$(NAME)		:	$(OPATH) $(LIB) $(OBJ)
 				@gcc $(OPTIONS) $(OBJ) $(LIB) -o $@
 				@echo "\033[32mLinking $(NAME) complete!\033[0m"
 
-$(OPATH)%.o	:	$(SPATH)%.c $(OPATH)
+$(OPATH)%.o	:	$(SPATH)%.c
 				@gcc $(OPTIONS) $(HEADERS) -c $< -o $@
 				@echo "\033[90mObject file $(@:$(OPATH)%=%) has been made.\033[0m"
 

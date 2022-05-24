@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/23 15:15:37 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/05/24 17:05:16 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -69,6 +69,7 @@ static t_stk	*getstk(int size, int *tab)
 		stk->last = ft_lstnew((int *)(tab + i));
 		ft_lstadd_back(&stk->frst, stk->last);
 	}
+	stk->size = size;
 	return (stk);
 }
 
@@ -82,8 +83,9 @@ static void	clrstk(t_stk *stk)
 int	main(int argc, char **argv)
 {
 	int		*tab;
-	t_stk*	stk;
-	
+	t_stk	*a;
+	t_stk	*b;
+
 	if (argc < 2)
 		return (1);
 	if (!checkint(argc, argv))
@@ -91,17 +93,17 @@ int	main(int argc, char **argv)
 	tab = getints(argc, argv);
 	if (!tab)
 		return (ft_printf("Error\n"));
-	stk = getstk(argc - 1, tab);
-	if (!stk)
+	a = getstk(argc - 1, tab);
+	b = ft_calloc(1, sizeof (t_stk));
+	if (!a || !b)
 		return (ft_printf("Error\n"));
-	printstk(stk);
-	swpstk(stk);
-	printstk(stk);
-	rotstk(stk);
-	printstk(stk);
-	rrtstk(stk);
-	printstk(stk);
+	printstk(a);
+	printstk(b);
+	sortblock(a, b);
+	printstk(a);
+	printstk(b);
 	free(tab);
-	clrstk(stk);
+	clrstk(a);
+	clrstk(b);
 	return (0);
 }
