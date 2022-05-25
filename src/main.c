@@ -6,19 +6,19 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/24 17:05:16 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/05/25 04:50:49 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-static void	printstk(t_stk *stk)
+void	printstk(t_stk *stk)
 {
 	t_list	*buf;
 
 	buf = stk->frst;
 	while (buf)
 	{
-		ft_printf("%15i", *(int *)buf->content);
+		ft_printf("%4i", *(int *)buf->content);
 		buf = buf->next;
 	}
 	ft_printf("\n");
@@ -98,10 +98,8 @@ int	main(int argc, char **argv)
 	if (!a || !b)
 		return (ft_printf("Error\n"));
 	printstk(a);
-	printstk(b);
 	sortblock(a, b);
 	printstk(a);
-	printstk(b);
 	free(tab);
 	clrstk(a);
 	clrstk(b);

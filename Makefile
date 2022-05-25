@@ -6,7 +6,7 @@
 #    By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 13:51:31 by afuchs            #+#    #+#              #
-#    Updated: 2022/05/24 14:36:06 by afuchs           ###   ########.fr        #
+#    Updated: 2022/05/25 04:49:36 by afuchs           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ LPATH	= libft/
 
 HPATH	= header/
 
-SRC		= main.c operation.c checkint.c sortblock.c
+SRC		=	main.c operation.c checkint.c sortblock.c pushbyblockba.c	\
+			pushbyblockab.c issorted.c									\
 
 OBJ		= $(SRC:%.c=$(OPATH)%.o)
 

@@ -6,12 +6,12 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 13:41:54 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/20 15:24:05 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/05/25 04:59:44 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-char	swpstk(t_stk *stk)
+void	swpstk(t_stk *stk)
 {
 	void	*buf;
 
@@ -20,12 +20,11 @@ char	swpstk(t_stk *stk)
 		buf = stk->frst->content;
 		stk->frst->content = stk->frst->next->content;
 		stk->frst->next->content = buf;
-		return (1);
+		ft_printf("swap\n");	
 	}
-	return (0);
 }
 
-char	pshstk(t_stk *A, t_stk *B)
+void	pshstk(t_stk *A, t_stk *B)
 {
 	t_list	*buf;
 
@@ -39,12 +38,13 @@ char	pshstk(t_stk *A, t_stk *B)
 			B->last = B->frst;
 		if (!A->frst)
 			A->last = (void *)0;
-		return (1);
+		A->size--;
+		B->size++;
+		ft_printf("push\n");
 	}
-	return (0);
 }
 
-char	rotstk(t_stk *stk)
+void	rotstk(t_stk *stk)
 {
 	if (stk && stk->frst && stk->frst->next)
 	{
@@ -52,12 +52,11 @@ char	rotstk(t_stk *stk)
 		stk->last = stk->frst;
 		stk->frst = stk->frst->next;
 		stk->last->next = (void *)0;
-		return (1);
+		ft_printf("rota\n");
 	}
-	return (0);
 }
 
-char	rrtstk(t_stk *stk)
+void	rrtstk(t_stk *stk)
 {
 	t_list	*buf;
 
@@ -70,7 +69,6 @@ char	rrtstk(t_stk *stk)
 		stk->frst = buf->next;
 		buf->next = (void *)0;
 		stk->last = buf;
-		return (1);
+		ft_printf("rota\n");
 	}
-	return (0);
 }
