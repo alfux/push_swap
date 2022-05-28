@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 13:41:54 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/25 04:59:44 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/05/28 03:48:12 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -20,7 +20,7 @@ void	swpstk(t_stk *stk)
 		buf = stk->frst->content;
 		stk->frst->content = stk->frst->next->content;
 		stk->frst->next->content = buf;
-		ft_printf("swap\n");	
+		ft_printf("s%c\n", stk->name);
 	}
 }
 
@@ -40,7 +40,7 @@ void	pshstk(t_stk *A, t_stk *B)
 			A->last = (void *)0;
 		A->size--;
 		B->size++;
-		ft_printf("push\n");
+		ft_printf("p%c\n", B->name);
 	}
 }
 
@@ -52,7 +52,7 @@ void	rotstk(t_stk *stk)
 		stk->last = stk->frst;
 		stk->frst = stk->frst->next;
 		stk->last->next = (void *)0;
-		ft_printf("rota\n");
+		ft_printf("r%c\n", stk->name);
 	}
 }
 
@@ -69,6 +69,6 @@ void	rrtstk(t_stk *stk)
 		stk->frst = buf->next;
 		buf->next = (void *)0;
 		stk->last = buf;
-		ft_printf("rota\n");
+		ft_printf("rr%c\n", stk->name);
 	}
 }

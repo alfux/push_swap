@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/25 04:50:49 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/05/28 02:15:35 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -70,6 +70,7 @@ static t_stk	*getstk(int size, int *tab)
 		ft_lstadd_back(&stk->frst, stk->last);
 	}
 	stk->size = size;
+	stk->name = 'a';
 	return (stk);
 }
 
@@ -86,7 +87,7 @@ int	main(int argc, char **argv)
 	t_stk	*a;
 	t_stk	*b;
 
-	if (argc < 2)
+	if (argc <= 2)
 		return (1);
 	if (!checkint(argc, argv))
 		return (ft_printf("Error\n"));
@@ -95,11 +96,10 @@ int	main(int argc, char **argv)
 		return (ft_printf("Error\n"));
 	a = getstk(argc - 1, tab);
 	b = ft_calloc(1, sizeof (t_stk));
+	b->name = 'b';
 	if (!a || !b)
 		return (ft_printf("Error\n"));
-	printstk(a);
 	sortblock(a, b);
-	printstk(a);
 	free(tab);
 	clrstk(a);
 	clrstk(b);

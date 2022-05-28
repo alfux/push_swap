@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 13:19:47 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/25 04:48:54 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/05/28 02:35:22 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -27,18 +27,21 @@ void	sortblock(t_stk *a, t_stk *b)
 	int	two;
 
 	two = 1;
-	sortbytwo(a, b);
-	while (1)
+	if (!aissorted(a, b))
 	{
-		two *= 2;
-		if (bissorted(a, b))
-			while (b->size)
-				pshstk(b, a);
-		else
-			pushbyblockba(a, b, two);
-		if (aissorted(a, b))
-			break ;
-		else
-			pushbyblockab(a, b, 2 * two);
+		sortbytwo(a, b);
+		while (1)
+		{
+			two *= 2;
+			if (bissorted(a, b))
+				while (b->size)
+					pshstk(b, a);
+			else
+				pushbyblockba(a, b, two);
+			if (aissorted(a, b))
+				break ;
+			else
+				pushbyblockab(a, b, 2 * two);
+		}
 	}
 }

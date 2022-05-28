@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 13:19:47 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/25 04:56:23 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/05/28 03:33:15 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -24,7 +24,7 @@ static void	ascendba(t_stk *a, t_stk *b, unsigned int n, int fst)
 				pshstk(b, a);
 			fst = *(int *)a->frst->content;
 		}
-		else if (*(int *)b->frst->content > *(int *)a->last->content)
+		else if (b->frst && *(int *)b->frst->content > *(int *)a->last->content)
 		{
 			pshstk(b, a);
 			i++;
@@ -44,7 +44,7 @@ static void	dscendba(t_stk *a, t_stk *b, int lst)
 	while (a->frst == buf)
 	{
 		buf = a->frst->next;
-		if (*(int *)a->frst->content > *(int *)b->frst->content)
+		if (b->frst && *(int *)a->frst->content > *(int *)b->frst->content)
 			pshstk(b, a);
 		else if (*(int *)a->frst->content == lst)
 		{
