@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/31 12:22:11 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/05/31 13:41:20 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -68,6 +68,10 @@ static t_stk	*getstk(int size, int *tab)
 	{
 		stk->last = ft_lstnew((int *)(tab + i));
 		ft_lstadd_back(&stk->frst, stk->last);
+		if (!i || *(int *)stk->last->content < stk->sml)
+			stk->sml = *(int *)stk->last->content;
+		if (!i || *(int *)stk->last->content > stk->lrg)
+			stk->lrg = *(int *)stk->last->content;
 	}
 	stk->size = size;
 	stk->name = 'a';
@@ -99,7 +103,8 @@ int	main(int argc, char **argv)
 	b->name = 'b';
 	if (!a || !b)
 		return (ft_printf("Error\n"));
-	sortbymerge(a, b);
+//	sortbymerge(a, b);
+	timsort(a);
 	free(tab);
 	clrstk(a);
 	clrstk(b);

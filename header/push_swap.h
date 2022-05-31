@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:49:14 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/31 12:27:43 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/05/31 13:38:18 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -19,6 +19,8 @@ struct					s_stk
 	t_list	*last;
 	size_t	size;
 	char	name;
+	int		lrg;
+	int		sml;
 };
 typedef struct s_stk	t_stk;
 
@@ -33,4 +35,5 @@ void	sortbymerge(t_stk *a, t_stk *b);
 char	aissorted(t_stk *a);
 char	bissorted(t_stk *b);
 void	printstk(t_stk *stk);
+void	timsort(t_stk *a);
 #endif
