@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:49:14 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/31 13:38:18 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/01 00:16:54 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -36,4 +36,5 @@ char	aissorted(t_stk *a);
 char	bissorted(t_stk *b);
 void	printstk(t_stk *stk);
 void	timsort(t_stk *a);
+void	bmrgtimsort(t_stk *a);
 #endif

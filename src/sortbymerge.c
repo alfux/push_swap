@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sortblock.c                                        :+:      :+:    :+:   */
+/*   sortbymerge.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 13:19:47 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/31 12:49:15 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/01 02:18:12 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -85,9 +85,9 @@ void	sortbymerge(t_stk *a, t_stk *b)
 			two *= 2;
 			if (bissorted(b) && aissorted(a)
 				&& (!a->size || !b->size
-				|| *(int *)a->frst->content > *(int *)b->frst->content))
-					while (b->size)
-						pshstk(b, a);
+					|| *(int *)a->frst->content > *(int *)b->frst->content))
+				while (b->size)
+					pshstk(b, a);
 			else
 				pushbyblockba(a, b, two);
 			if (aissorted(a) && !b->size)
