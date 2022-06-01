@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:49:14 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/01 00:16:54 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/01 13:14:22 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -29,7 +29,11 @@ void	pshstk(t_stk *A, t_stk *B);
 void	rotstk(t_stk *stk);
 void	rrtstk(t_stk *stk);
 char	checkint(int argc, char **argv);
+void	ascendba(t_stk *a, t_stk *b, unsigned int n, int fst);
+void	dscendba(t_stk *a, t_stk *b, int lst);
 void	pushbyblockba(t_stk *a, t_stk *b, unsigned int n);
+void	ascendab(t_stk *a, t_stk *b, unsigned int n, int fst);
+void	dscendab(t_stk *a, t_stk *b, int lst);
 void	pushbyblockab(t_stk *a, t_stk *b, unsigned int n);
 void	sortbymerge(t_stk *a, t_stk *b);
 char	aissorted(t_stk *a);

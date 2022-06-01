@@ -6,12 +6,12 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 13:19:47 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/31 11:16:49 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/01 15:47:36 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-static void	ascendba(t_stk *a, t_stk *b, unsigned int n, int fst)
+void	ascendba(t_stk *a, t_stk *b, unsigned int n, int fst)
 {
 	unsigned int	i;
 
@@ -36,7 +36,7 @@ static void	ascendba(t_stk *a, t_stk *b, unsigned int n, int fst)
 		rrtstk(a);
 }
 
-static void	dscendba(t_stk *a, t_stk *b, int lst)
+void	dscendba(t_stk *a, t_stk *b, int lst)
 {
 	t_list			*buf;
 
@@ -54,6 +54,21 @@ static void	dscendba(t_stk *a, t_stk *b, int lst)
 		else
 			rotstk(a);
 	}
+}
+
+static void	mergeremainderba(t_stk *a, t_stk *b, unsigned int n)
+{
+	unsigned int	i;
+	int				fst;
+	int				lst;
+
+	i = 0;
+	while (i++ < n)
+		pshstk(b, a);
+	fst = *(int *)b->frst->content;
+	lst = *(int *)b->last->content;
+	dscendab(a, b, lst);
+	ascendab(a, b, n - 1, fst);
 }
 
 void	pushbyblockba(t_stk *a, t_stk *b, unsigned int n)
@@ -79,4 +94,6 @@ void	pushbyblockba(t_stk *a, t_stk *b, unsigned int n)
 		dscendba(a, b, lst);
 		ascendba(a, b, n - 1, fst);
 	}
+	if (b->size > n && !bissorted(b))
+		mergeremainderba(a, b, n);
 }

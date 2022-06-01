@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 13:19:47 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/01 02:18:12 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/01 16:10:53 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -69,6 +69,25 @@ static void	sortbytwob(t_stk *a, t_stk *b)
 	}
 }
 
+static void	finalmerge(t_stk *a, t_stk *b)
+{
+	int				fst;
+	int				lst;
+
+	if (!a->size)
+		while (b->size)
+			pshstk(b, a);
+	else if (!b->size)
+		return ;
+	else
+	{
+		fst = *(int *)a->frst->content;
+		lst = *(int *)a->last->content;
+		dscendba(a, b, lst);
+		ascendba(a, b, b->size, fst);
+	}
+}
+
 void	sortbymerge(t_stk *a, t_stk *b)
 {
 	int	two;
@@ -83,11 +102,8 @@ void	sortbymerge(t_stk *a, t_stk *b)
 		while (1)
 		{
 			two *= 2;
-			if (bissorted(b) && aissorted(a)
-				&& (!a->size || !b->size
-					|| *(int *)a->frst->content > *(int *)b->frst->content))
-				while (b->size)
-					pshstk(b, a);
+			if (bissorted(b) && aissorted(a))
+				finalmerge(a, b);
 			else
 				pushbyblockba(a, b, two);
 			if (aissorted(a) && !b->size)

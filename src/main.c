@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/01 00:17:05 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/01 16:11:46 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -103,8 +103,7 @@ int	main(int argc, char **argv)
 	b->name = 'b';
 	if (!a || !b)
 		return (ft_printf("Error\n"));
-//	sortbymerge(a, b);
-	bmrgtimsort(a);
+	sortbymerge(a, b);
 	free(tab);
 	clrstk(a);
 	clrstk(b);
