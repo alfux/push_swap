@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/01 16:11:46 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/03 18:23:35 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -96,14 +96,16 @@ int	main(int argc, char **argv)
 	if (!checkint(argc, argv))
 		return (ft_printf("Error\n"));
 	tab = getints(argc, argv);
+	tab = simplify_list(argc - 1, tab);
 	if (!tab)
 		return (ft_printf("Error\n"));
 	a = getstk(argc - 1, tab);
+	printstk(a);
 	b = ft_calloc(1, sizeof (t_stk));
 	b->name = 'b';
 	if (!a || !b)
 		return (ft_printf("Error\n"));
-	sortbymerge(a, b);
+	//algotri
 	free(tab);
 	clrstk(a);
 	clrstk(b);
