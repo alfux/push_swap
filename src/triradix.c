@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:16:10 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/03 20:30:42 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/07 09:55:25 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -66,7 +66,6 @@ void	triradix(t_stk *a, t_stk *b)
 	while (!aissorted(a))
 	{
 		step(a, b, tri);
-		printstk(a);
 		tri *= 3;
 	}
 	while (0)
