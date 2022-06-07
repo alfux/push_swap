@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/03 20:22:55 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/07 11:23:05 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -104,7 +104,10 @@ int	main(int argc, char **argv)
 	b->name = 'b';
 	if (!a || !b)
 		return (ft_printf("Error\n"));
-	triradix(a, b);
+	printstk(a);
+	ft_printf("------------------GOL-----------------------------\n");
+	b->frst = gol(a);
+	printstk(b);
 	free(tab);
 	clrstk(a);
 	clrstk(b);

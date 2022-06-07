@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:49:14 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/03 19:33:48 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/07 11:22:04 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -43,4 +43,5 @@ void	timsort(t_stk *a);
 void	bmrgtimsort(t_stk *a);
 int		*simplify_list(int size, int *tab);
 void	triradix(t_stk *a, t_stk *b);
+t_list	*gol(t_stk *stk);
 #endif
