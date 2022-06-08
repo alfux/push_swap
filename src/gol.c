@@ -5,110 +5,96 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 09:58:53 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/07 13:43:01 by afuchs           ###   ########.fr       */
+/*   Created: 2022/06/08 01:31:07 by afuchs            #+#    #+#             */
+/*   Updated: 2022/06/08 03:18:12 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-t_stk	aff;
-
-static int	orderedlst(t_stk *stk, t_list *frst, t_list *next, t_list **tmp)
+static t_list	*saved_list(t_list *lst, int size, char bit)
 {
-	int		cmp;
-	int		size;
-	t_list	*buf;
+	static int		saved_size;
+	static t_list	*saved_lst;
 
-	cmp = *(int *)frst->content;
-	ft_lstadd_back(tmp, ft_lstnew(frst->content));
-	size = 1;
-	if (next)
-		buf = next;
-	else
-		buf = stk->frst;
-	while (buf != frst)
+	if (bit)
+		return (saved_lst);
+	if (size > saved_size)
 	{
-		if (cmp < *(int *)buf->content)
-		{
-			ft_lstadd_back(tmp, ft_lstnew(buf->content));
-			size++;
-			cmp = *(int *)buf->content;
-		}
-		if (buf->next)
-			buf = buf->next;
-		else
-			buf = stk->frst;
+		saved_size = size;
+		if (saved_lst)
+			ft_lstclear(&saved_lst, (void *)0);
+		saved_lst = ft_lstmap(lst, &identity, (void *)0);
 	}
-	return (size);
+	return (lst);
 }
 
-static int	gol_from(t_stk *stk, t_list *frst, t_list **tmp)
+static t_list	*rotate(t_stk *stk, t_list *list)
 {
-	int		size;
-	int		stmp;
-	t_list	*buf;
-	t_list	*ttmp;
+	if (list)
+		return (list);
+	return (stk->frst);
+}
 
-	size = orderedlst(stk, frst, frst->next, tmp);
-	ttmp = (void *)0;
-	if (frst->next && frst->next->next)
-		buf = frst->next->next;
-	else
-		buf = stk->frst;
-	while (buf != frst)
+static void	lstdel_last(t_list **lst)
+{
+	if ((*lst)->next)
 	{
-		stmp = orderedlst(stk, frst, buf, &ttmp);
-		if (stmp > size)
+		if ((*lst)->next->next)
+			lstdel_last(&(*lst)->next);
+		else
 		{
-			ft_lstclear(tmp, (void *)0);
-			*tmp = ttmp;
-			ttmp = (void *)0;
-			size = stmp;
+			ft_lstdelone((*lst)->next, (void *)0);
+			(*lst)->next = (void *)0;
 		}
-		else
-			ft_lstclear(&ttmp, (void *)0);
-		if (buf->next)
-			buf = buf->next;
-		else
-			buf = stk->frst;
 	}
-	return (size);
+	else
+	{
+		ft_lstdelone(*lst, (void *)0);
+		*lst = (void *)0;
+	}
+}
+/*
+static void	printlst(t_list *lst)
+{
+	t_stk	stk;
+
+	stk.frst = lst;
+	printstk(&stk);
+}
+*/
+static t_list	*gol_from(t_stk *stk, t_list *start, t_list *stop)
+{
+	static int		size;
+	static t_list	*gol;
+	int				n;
+	t_list			*nxt;
+
+	ft_lstadd_back(&gol, ft_lstnew(start->content));
+	nxt = rotate(stk, start->next);
+	n = 1;
+	while ((size_t)n < stk->size - *(int *)start->content)
+	{
+		while (nxt != stop)
+		{
+				if (*(int *)nxt->content == *(int *)start->content + n)
+				{
+					size++;
+					gol = gol_from(stk, nxt, stop);
+					lstdel_last(&gol);
+					size--;
+				}
+				nxt = rotate(stk, nxt->next);
+		}
+		nxt = rotate(stk, start->next);
+		n++;
+	}
+	if (start != stop)
+		return (saved_list(gol, size, 0));
+	ft_lstclear(&gol, (void *)0);
+	return (saved_list((void *)0, 0, 1));
 }
 
 t_list	*gol(t_stk *stk)
 {
-	t_list	*ext;
-	t_list	*tmp;
-	t_list	*buf;
-	int		size;
-	int		stmp;
-
-	ext = (t_list *)0;
-	tmp = (t_list *)0;
-	size = gol_from(stk, stk->frst, &ext);
-	ft_printf("----------------------\n");
-	aff.frst = ext;
-	printstk(&aff);
-	ft_printf("----------------------\n");
-	buf = stk->frst->next;
-	while (buf)
-	{
-		ft_printf("----------------------\n");
-		stmp = gol_from(stk, buf, &tmp);
-		aff.frst = tmp;
-		printstk(&aff);
-		ft_printf("----------------------\n");
-		if (stmp > size)
-		{
-			ft_lstclear(&ext, (void *)0);
-			ext = tmp;
-			tmp = (t_list *)0;
-			size = stmp;
-		}
-		else
-			ft_lstclear(&tmp, (void *)0);
-		buf = buf->next;
-	}
-	printstk(&aff);
-	return (ext);
+	return (gol_from(stk, stk->frst, stk->frst));
 }

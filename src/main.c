@@ -6,10 +6,15 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/07 11:23:05 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/08 02:20:02 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
+
+void	*identity(void *nul)
+{
+	return (nul);
+}
 
 void	printstk(t_stk *stk)
 {
