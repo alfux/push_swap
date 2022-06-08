@@ -6,73 +6,74 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:16:10 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/08 05:18:13 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/09 00:59:28 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-static void	step(t_stk *a, t_stk *b, int tri)
+static int	swtelem(t_stk *a, t_list *elem)
 {
-	int	i;
-	int	buf;
+	int		first;
+	t_list	*buf;
 
-	i = a->size;
-	while (i--)
+	first = 0;
+	buf = a->frst;
+	while (buf && buf != elem)
 	{
-		buf = (*(int *)a->frst->content / tri) % 3;
-		if (buf == 2)
-			rotstk(a);
-		else
-			pshstk(a, b);
+		first++;
+		buf = buf->next;
 	}
-	i = b->size;
-	while (i--)
-	{
-		buf = (*(int *)b->frst->content / tri) % 3;
-		if (buf == 0)
-			rotstk(b);
-		else
-			pshstk(b, a);
-	}
-	i = b->size;
-	while (i--)
-		pshstk(b, a);
+	if ((size_t)first < a->size - first)
+		return (first);
+	return (first - a->size);
 }
 
-static void	steptwo(t_stk *a, t_stk *b, int tri)
+static void	smartrot(t_stk *stk, int moves)
 {
-	int	i;
-	int	buf;
-	int	bdiff;
+	if (moves >= 0)
+		while (moves--)
+			rotstk(stk);
+	else
+		while (moves++)
+			rrtstk(stk);
+}
 
-	i = a->size;
-	bdiff = b->size;
-	while (i--)
+static t_list	*first(char zo, t_stk *a, int bit)
+{
+	t_list	*buf;
+
+	buf = a->frst;
+	while (buf && ((*(int *)buf->content >> bit) % 2) != zo)
+		buf = buf->next;
+	return (buf);
+}
+
+static void	steptwo(t_stk *a, t_stk *b, int bit)
+{
+	t_list	*one;
+	t_list	*zero;
+
+	one = first(1, a, bit);
+	zero = first(0, a, bit);
+	while (zero)
 	{
-		buf = (*(int *)a->frst->content / tri) % 2;
-		if (!buf)
-			pshstk(a, b);
-		else
-			rotstk(a);
+		smartrot(a, swtelem(a, zero));
+		pshstk(a, b);
+		zero = first(0, a, bit);
 	}
-	i = b->size - bdiff;
-	while (i--)
+	smartrot(a, swtelem(a, one));
+	while (b->size)
 		pshstk(b, a);
 }
 
 void	triradix(t_stk *a, t_stk *b)
 {
-	int	tri;
+	int	bit;
 
-	tri = 1;
-	while (0)
-	{
-		step(a, b, tri);
-		tri *= 3;
-	}
+	bit = 0;
 	while (!aissorted(a))
 	{
-		steptwo(a, b, tri);
-		tri *= 2;
+		steptwo(a, b, bit);
+		bit++;
 	}
 }
