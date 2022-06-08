@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:16:10 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/08 05:06:46 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/08 05:18:13 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -43,8 +43,10 @@ static void	steptwo(t_stk *a, t_stk *b, int tri)
 {
 	int	i;
 	int	buf;
+	int	bdiff;
 
 	i = a->size;
+	bdiff = b->size;
 	while (i--)
 	{
 		buf = (*(int *)a->frst->content / tri) % 2;
@@ -53,7 +55,7 @@ static void	steptwo(t_stk *a, t_stk *b, int tri)
 		else
 			rotstk(a);
 	}
-	i = b->size;
+	i = b->size - bdiff;
 	while (i--)
 		pshstk(b, a);
 }
@@ -63,12 +65,12 @@ void	triradix(t_stk *a, t_stk *b)
 	int	tri;
 
 	tri = 1;
-	while (!aissorted(a))
+	while (0)
 	{
 		step(a, b, tri);
 		tri *= 3;
 	}
-	while (0)
+	while (!aissorted(a))
 	{
 		steptwo(a, b, tri);
 		tri *= 2;

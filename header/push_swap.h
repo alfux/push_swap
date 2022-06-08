@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:49:14 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/08 05:00:45 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/08 05:47:06 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -46,4 +46,5 @@ void	triradix(t_stk *a, t_stk *b);
 t_list	*gol(t_stk *stk);
 void	*identity(void *nul);
 void	lstdel_last(t_list **lst);
+void	optriradix(t_stk *a, t_stk *b);
 #endif
