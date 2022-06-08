@@ -6,7 +6,7 @@
 #    By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 13:51:31 by afuchs            #+#    #+#              #
-#    Updated: 2022/06/07 11:12:33 by afuchs           ###   ########.fr        #
+#    Updated: 2022/06/08 05:04:50 by afuchs           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ HPATH	= header/
 
 SRC		=	main.c operation.c checkint.c sortbymerge.c pushbyblockba.c	\
 			pushbyblockab.c issorted.c timsort.c simplify.c triradix.c	\
-			gol.c														\
+			gol.c lstdel_last.c											\
 
 OBJ		= $(SRC:%.c=$(OPATH)%.o)
 

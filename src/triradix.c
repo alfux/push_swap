@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:16:10 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/07 09:55:25 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/08 05:06:46 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -14,7 +14,7 @@
 static void	step(t_stk *a, t_stk *b, int tri)
 {
 	int	i;
-	int buf;
+	int	buf;
 
 	i = a->size;
 	while (i--)

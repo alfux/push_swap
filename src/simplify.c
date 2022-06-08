@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:32:18 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/03 18:51:11 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/08 05:06:19 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -19,6 +19,7 @@ static void	swap(int *a, int *b)
 	*a = *b;
 	*b = buf;
 }
+
 //AOPTI
 static void	mimictab(int size, int *tab, int *ntab)
 {
