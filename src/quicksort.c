@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 02:28:56 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/09 04:39:55 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/09 06:27:59 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -39,7 +39,7 @@ static t_list	*median(t_stk *a)
 	return (buf);
 }
 
-static t_list	*clstsub(t_stk *a, t_list *median, int *moves)
+t_list	*clstsub(t_stk *a, t_list *median, int *moves)
 {
 	t_list	*buf;
 	t_list	*first;
@@ -80,7 +80,7 @@ static void	pshsubmed(t_stk *a, t_stk *b)
 	{
 		smartrot(a, moves);
 		pshstk(a, b);
-		insortb(a, b);
+		insortb(a, b, med);
 		submed = clstsub(a, med, &moves);
 	}
 }
@@ -88,9 +88,7 @@ static void	pshsubmed(t_stk *a, t_stk *b)
 void	quicksort(t_stk *a, t_stk *b)
 {
 	while (a->size > 1)
-	{
 		pshsubmed(a, b);
-		printstk(a);
-		printstk(b);
-	}
+	while (b->size)
+		pshstk(b, a);
 }
