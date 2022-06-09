@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/09 00:10:04 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/09 03:41:12 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -21,12 +21,14 @@ void	printstk(t_stk *stk)
 	t_list	*buf;
 
 	buf = stk->frst;
+	ft_printf("--------------Stack-%c------------------------------------\n",
+			stk->name);
 	while (buf)
 	{
 		ft_printf("%4i", *(int *)buf->content);
 		buf = buf->next;
 	}
-	ft_printf("\n");
+	ft_printf("\n---------------------------------------------------------\n");
 }
 
 static int	*getints(int argc, char **argv)
@@ -110,8 +112,7 @@ int	main(int argc, char **argv)
 	if (!a || !b)
 		return (ft_printf("Error\n"));
 	printstk(a);
-	triradix(a, b);
-	printstk(a);
+	quicksort(a, b);
 	free(tab);
 	clrstk(a);
 	clrstk(b);

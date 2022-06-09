@@ -6,12 +6,12 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:16:10 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/09 00:59:28 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/09 02:28:42 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-static int	swtelem(t_stk *a, t_list *elem)
+int	swtelem(t_stk *a, t_list *elem)
 {
 	int		first;
 	t_list	*buf;
@@ -28,7 +28,7 @@ static int	swtelem(t_stk *a, t_list *elem)
 	return (first - a->size);
 }
 
-static void	smartrot(t_stk *stk, int moves)
+void	smartrot(t_stk *stk, int moves)
 {
 	if (moves >= 0)
 		while (moves--)
