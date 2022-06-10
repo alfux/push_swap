@@ -1,0 +1,40 @@
+echo "\033[36m------------------------------\033[0m"
+echo "\033[32mQuicksort 5\033[0m: C:$(./quicksort 1 5 2 4 3 | ./checker_mac 1 5 2 4 3) M:$(./quicksort 1 5 2 4 3 | wc -l)" | tr -s ' ';
+echo "\033[32mQuicksort 8\033[0m: C:$(./quicksort $(cat test/8) | ./checker_mac $(cat test/8)) M:$(./quicksort $(cat test/8) | wc -l)" | tr -s ' ';
+echo "\033[32mQuicksort 16\033[0m: C:$(./quicksort $(cat test/16) | ./checker_mac $(cat test/16)) M:$(./quicksort $(cat test/16) | wc -l)" | tr -s ' ';
+echo "\033[32mQuicksort 32\033[0m: C:$(./quicksort $(cat test/32) | ./checker_mac $(cat test/32)) M:$(./quicksort $(cat test/32) | wc -l)" | tr -s ' ';
+echo "\033[32mQuicksort 50\033[0m: C:$(./quicksort $(cat test/50) | ./checker_mac $(cat test/50)) M:$(./quicksort $(cat test/50) | wc -l)" | tr -s ' ';
+echo "\033[32mQuicksort 64\033[0m: C:$(./quicksort $(cat test/64) | ./checker_mac $(cat test/64)) M:$(./quicksort $(cat test/64) | wc -l)" | tr -s ' ';
+echo "\033[32mQuicksort 100\033[0m: C:$(./quicksort $(cat test/100) | ./checker_mac $(cat test/100)) M:$(./quicksort $(cat test/100) | wc -l)" | tr -s ' ';
+echo "\033[32mQuicksort 500\033[0m: C:$(./quicksort $(cat test/500) | ./checker_mac $(cat test/500)) M:$(./quicksort $(cat test/500) | wc -l)" | tr -s ' ';
+echo "\033[36m------------------------------\033[0m"
+echo "\033[36m------------------------------\033[0m"
+echo "\033[32mTimsort 5\033[0m: C:$(./timsort 1 5 2 4 3 | ./checker_mac 1 5 2 4 3) M:$(./timsort 1 5 2 4 3 | wc -l)" | tr -s ' ';
+echo "\033[32mTimsort 8\033[0m: C:$(./timsort $(cat test/8) | ./checker_mac $(cat test/8)) M:$(./timsort $(cat test/8) | wc -l)" | tr -s ' ';
+echo "\033[32mTimsort 16\033[0m: C:$(./timsort $(cat test/16) | ./checker_mac $(cat test/16)) M:$(./timsort $(cat test/16) | wc -l)" | tr -s ' ';
+echo "\033[32mTimsort 32\033[0m: C:$(./timsort $(cat test/32) | ./checker_mac $(cat test/32)) M:$(./timsort $(cat test/32) | wc -l)" | tr -s ' ';
+echo "\033[32mTimsort 50\033[0m: C:$(./timsort $(cat test/50) | ./checker_mac $(cat test/50)) M:$(./timsort $(cat test/50) | wc -l)" | tr -s ' ';
+echo "\033[32mTimsort 64\033[0m: C:$(./timsort $(cat test/64) | ./checker_mac $(cat test/64)) M:$(./timsort $(cat test/64) | wc -l)" | tr -s ' ';
+echo "\033[32mTimsort 100\033[0m: C:$(./timsort $(cat test/100) | ./checker_mac $(cat test/100)) M:$(./timsort $(cat test/100) | wc -l)" | tr -s ' ';
+echo "\033[32mTimsort 500\033[0m: C:$(./timsort $(cat test/500) | ./checker_mac $(cat test/500)) M:$(./timsort $(cat test/500) | wc -l)" | tr -s ' ';
+echo "\033[36m------------------------------\033[0m"
+echo "\033[36m------------------------------\033[0m"
+echo "\033[32mRadix 5\033[0m: C:$(./radix 1 5 2 4 3 | ./checker_mac 1 5 2 4 3) M:$(./radix 1 5 2 4 3 | wc -l)" | tr -s ' ';
+echo "\033[32mRadix 8\033[0m: C:$(./radix $(cat test/8) | ./checker_mac $(cat test/8)) M:$(./radix $(cat test/8) | wc -l)" | tr -s ' ';
+echo "\033[32mRadix 16\033[0m: C:$(./radix $(cat test/16) | ./checker_mac $(cat test/16)) M:$(./radix $(cat test/16) | wc -l)" | tr -s ' ';
+echo "\033[32mRadix 32\033[0m: C:$(./radix $(cat test/32) | ./checker_mac $(cat test/32)) M:$(./radix $(cat test/32) | wc -l)" | tr -s ' ';
+echo "\033[32mRadix 50\033[0m: C:$(./radix $(cat test/50) | ./checker_mac $(cat test/50)) M:$(./radix $(cat test/50) | wc -l)" | tr -s ' ';
+echo "\033[32mRadix 64\033[0m: C:$(./radix $(cat test/64) | ./checker_mac $(cat test/64)) M:$(./radix $(cat test/64) | wc -l)" | tr -s ' ';
+echo "\033[32mRadix 100\033[0m: C:$(./radix $(cat test/100) | ./checker_mac $(cat test/100)) M:$(./radix $(cat test/100) | wc -l)" | tr -s ' ';
+echo "\033[32mRadix 500\033[0m: C:$(./radix $(cat test/500) | ./checker_mac $(cat test/500)) M:$(./radix $(cat test/500) | wc -l)" | tr -s ' ';
+echo "\033[36m------------------------------\033[0m"
+echo "\033[36m------------------------------\033[0m"
+echo "\033[32mMerge 5\033[0m: C:$(./merge 1 5 2 4 3 | ./checker_mac 1 5 2 4 3) M:$(./merge 1 5 2 4 3 | wc -l)" | tr -s ' ';
+echo "\033[32mMerge 8\033[0m: C:$(./merge $(cat test/8) | ./checker_mac $(cat test/8)) M:$(./merge $(cat test/8) | wc -l)" | tr -s ' ';
+echo "\033[32mMerge 16\033[0m: C:$(./merge $(cat test/16) | ./checker_mac $(cat test/16)) M:$(./merge $(cat test/16) | wc -l)" | tr -s ' ';
+echo "\033[32mMerge 32\033[0m: C:$(./merge $(cat test/32) | ./checker_mac $(cat test/32)) M:$(./merge $(cat test/32) | wc -l)" | tr -s ' ';
+echo "\033[32mMerge 50\033[0m: C:$(./merge $(cat test/50) | ./checker_mac $(cat test/50)) M:$(./merge $(cat test/50) | wc -l)" | tr -s ' ';
+echo "\033[32mMerge 64\033[0m: C:$(./merge $(cat test/64) | ./checker_mac $(cat test/64)) M:$(./merge $(cat test/64) | wc -l)" | tr -s ' ';
+echo "\033[32mMerge 100\033[0m: C:$(./merge $(cat test/100) | ./checker_mac $(cat test/100)) M:$(./merge $(cat test/100) | wc -l)" | tr -s ' ';
+echo "\033[32mMerge 500\033[0m: C:$(./merge $(cat test/500) | ./checker_mac $(cat test/500)) M:$(./merge $(cat test/500) | wc -l)" | tr -s ' ';
+echo "\033[36m------------------------------\033[0m"

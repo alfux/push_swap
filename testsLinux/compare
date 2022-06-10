@@ -1,6 +1,0 @@
-echo "Sort by merge"
-./merge_sort $ARG | wc -l;
-./merge_sort $ARG | ./checker_linux $ARG;
-echo "Boomerang timsort"
-./bmrg_sort $ARG | wc -l;
-./bmrg_sort $ARG | ./checker_linux $ARG;
