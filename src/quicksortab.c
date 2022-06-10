@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quicksort.c                                        :+:      :+:    :+:   */
+/*   quicksortab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 02:28:56 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/09 06:27:59 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/10 02:52:50 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -27,19 +27,17 @@ static int	nsub(t_stk *a, t_list *elem)
 	return (n);
 }
 
-static t_list	*median(t_stk *a)
+static t_list	*median(t_stk *a, int blcksz)
 {
 	t_list	*buf;
-	int		n;
 
 	buf = a->frst;
-	n = 0;
-	while (buf && nsub(a, buf) != a->size / 2)
+	while (buf && nsub(a, buf) != blcksz / 2)
 		buf = buf->next;
 	return (buf);
 }
 
-t_list	*clstsub(t_stk *a, t_list *median, int *moves)
+static t_list	*clstsub(t_stk *a, t_list *median, int *moves)
 {
 	t_list	*buf;
 	t_list	*first;
@@ -68,27 +66,26 @@ t_list	*clstsub(t_stk *a, t_list *median, int *moves)
 	return (last);
 }
 
-static void	pshsubmed(t_stk *a, t_stk *b)
+static void	pshsubmed(t_stk *a, t_stk *b, int blcksz)
 {
 	t_list	*med;
 	t_list	*submed;
+	t_list	*first;
 	int		moves;
 
-	med = median(a);
+	med = median(a, blcksz);
 	submed = clstsub(a, med, &moves);
+	first = a->frst;
 	while (submed)
 	{
 		smartrot(a, moves);
 		pshstk(a, b);
-		insortb(a, b, med);
 		submed = clstsub(a, med, &moves);
 	}
+	if ((size_t)blcksz != a->size)
+		smartrot(a, swtelem(a, first));
 }
 
-void	quicksort(t_stk *a, t_stk *b)
+void	quicksortab(t_stk *a, t_stk *b, int	blcksz, int	iter)
 {
-	while (a->size > 1)
-		pshsubmed(a, b);
-	while (b->size)
-		pshstk(b, a);
 }
