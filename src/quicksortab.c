@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 02:28:56 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/10 02:52:50 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/10 04:14:47 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -76,16 +76,29 @@ static void	pshsubmed(t_stk *a, t_stk *b, int blcksz)
 	med = median(a, blcksz);
 	submed = clstsub(a, med, &moves);
 	first = a->frst;
+	while (first && *(int *)first->content < *(int *)med->content)
+		first = first->next;
 	while (submed)
 	{
 		smartrot(a, moves);
 		pshstk(a, b);
 		submed = clstsub(a, med, &moves);
 	}
-	if ((size_t)blcksz != a->size)
-		smartrot(a, swtelem(a, first));
+	smartrot(a, swtelem(a, first));
 }
 
 void	quicksortab(t_stk *a, t_stk *b, int	blcksz, int	iter)
 {
+	int	i;
+
+	i = 0;
+	if (!ablckissorted(a, blcksz))
+	{
+		pshsubmed(a, b, blcksz);
+		quicksortab(a, b, blcksz - (blcksz / 2), iter);
+		if (!bblckissorted(b, blcksz / 2))
+			quicksortba(a, b, blcksz / 2, iter);
+		while (i++ < blcksz / 2)
+			pshstk(b, a);
+	}
 }

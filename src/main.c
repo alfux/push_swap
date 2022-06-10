@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/10 02:19:33 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/10 04:21:59 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -112,6 +112,7 @@ int	main(int argc, char **argv)
 	if (!a || !b)
 		return (ft_printf("Error\n"));
 	printstk(a);
+	printstk(b);
 	quicksortab(a, b, a->size, 0);
 	printstk(a);
 	printstk(b);
