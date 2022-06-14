@@ -6,15 +6,10 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/10 05:08:20 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/14 18:54:56 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
-
-void	*identity(void *nul)
-{
-	return (nul);
-}
 
 void	printstk(t_stk *stk)
 {
@@ -22,7 +17,7 @@ void	printstk(t_stk *stk)
 
 	buf = stk->frst;
 	ft_printf("--------------Stack-%c------------------------------------\n",
-			stk->name);
+		stk->name);
 	while (buf)
 	{
 		ft_printf("%4i", *(int *)buf->content);
@@ -103,7 +98,6 @@ int	main(int argc, char **argv)
 	if (!checkint(argc, argv))
 		return (ft_printf("Error\n"));
 	tab = getints(argc, argv);
-	tab = simplify_list(argc - 1, tab);
 	if (!tab)
 		return (ft_printf("Error\n"));
 	a = getstk(argc - 1, tab);
@@ -111,10 +105,7 @@ int	main(int argc, char **argv)
 	b->name = 'b';
 	if (!a || !b)
 		return (ft_printf("Error\n"));
-	//quicksortab(a, b, a->size, 0);
-	//bmrgtimsort(a);
-	//triradix(a, b);
-	sortbymerge(a, b);
+	quicksortab(a, b, a->size, 0);
 	free(tab);
 	clrstk(a);
 	clrstk(b);

@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   optriradix.c                                       :+:      :+:    :+:   */
+/*   triradix.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 05:13:00 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/08 05:47:11 by afuchs           ###   ########.fr       */
+/*   Created: 2022/06/03 19:16:10 by afuchs            #+#    #+#             */
+/*   Updated: 2022/06/14 18:40:01 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-static char	isingol(t_list *elem, t_list *ol)
+int	swtelem(t_stk *a, t_list *elem)
 {
-	t_list	*nxt;
+	int		first;
+	t_list	*buf;
 
-	nxt = ol;
-	while (nxt)
+	first = 0;
+	buf = a->frst;
+	while (buf && buf != elem)
 	{
-		if (elem->content == nxt->content)
-			return (1);
-		nxt = nxt->next;
+		first++;
+		buf = buf->next;
 	}
-	return (0);
+	if ((size_t)first < a->size - first)
+		return (first);
+	return (first - a->size);
 }
 
-void	optriradix(t_stk *a, t_stk *b)
+void	smartrot(t_stk *stk, int moves)
 {
-	t_list	*ol;
-	int		i;
-
-	ol = gol(a);
-	i = a->size;
-	while (i--)
-	{
-		if (isingol(a->frst, ol))
-			pshstk(a, b);
-		else
-			rotstk(a);
-	}
-	triradix(a, b);
+	if (moves >= 0)
+		while (moves--)
+			rotstk(stk);
+	else
+		while (moves++)
+			rrtstk(stk);
 }

@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 02:28:56 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/10 04:14:55 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/14 18:53:07 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -87,7 +87,7 @@ static void	pshovrmed(t_stk *a, t_stk *b, int blcksz)
 	smartrot(b, swtelem(b, first));
 }
 
-void	quicksortba(t_stk *a, t_stk *b, int blcksz, int	iter)
+void	quicksortba(t_stk *a, t_stk *b, int blcksz, int iter)
 {
 	int	i;
 

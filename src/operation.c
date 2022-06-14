@@ -6,20 +6,21 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 13:41:54 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/08 05:46:46 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/13 18:39:53 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
 void	swpstk(t_stk *stk)
 {
-	void	*buf;
+	t_list	*buf;
 
 	if (stk && stk->frst && stk->frst->next)
 	{
-		buf = stk->frst->content;
-		stk->frst->content = stk->frst->next->content;
-		stk->frst->next->content = buf;
+		buf = stk->frst;
+		stk->frst = stk->frst->next;
+		buf->next = stk->frst->next;
+		stk->frst->next = buf;
 		ft_printf("s%c\n", stk->name);
 	}
 }
