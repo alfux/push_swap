@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:49:14 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/14 19:02:05 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/14 19:46:23 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -21,6 +21,7 @@ struct					s_stk
 	char	name;
 	int		lrg;
 	int		sml;
+	t_list	**output;
 };
 typedef struct s_stk	t_stk;
 

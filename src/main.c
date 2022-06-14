@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/14 18:54:56 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/14 20:11:17 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -24,6 +24,15 @@ void	printstk(t_stk *stk)
 		buf = buf->next;
 	}
 	ft_printf("\n---------------------------------------------------------\n");
+}
+
+static void	printoutput(t_list *output)
+{
+	while (output)
+	{
+		ft_printf("%s\n", (char *)output->content);
+		output = output->next;
+	}
 }
 
 static int	*getints(int argc, char **argv)
@@ -83,15 +92,17 @@ static t_stk	*getstk(int size, int *tab)
 static void	clrstk(t_stk *stk)
 {
 	ft_lstclear(&stk->frst, (void *)0);
+	ft_lstclear(stk->output, &free);
 	stk->last = (void *)0;
 	free(stk);
 }
 
 int	main(int argc, char **argv)
 {
-	int		*tab;
-	t_stk	*a;
-	t_stk	*b;
+	int				*tab;
+	t_stk			*a;
+	t_stk			*b;
+	static t_list	*output;
 
 	if (argc <= 2)
 		return (1);
@@ -105,9 +116,12 @@ int	main(int argc, char **argv)
 	b->name = 'b';
 	if (!a || !b)
 		return (ft_printf("Error\n"));
-	quicksortab(a, b, a->size, 0);
-	free(tab);
+	a->output = &output;
+	b->output = &output;
+	quicksortab(a, b, a->size);
+	printoutput(*a->output);
 	clrstk(a);
 	clrstk(b);
+	free(tab);
 	return (0);
 }

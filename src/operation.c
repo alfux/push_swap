@@ -6,10 +6,15 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 13:41:54 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/13 18:39:53 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/14 19:53:19 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
+
+static void	addoutput(t_stk *stk, char *str)
+{
+	ft_lstadd_back(stk->output, ft_lstnew(ft_strdup(str)));
+}
 
 void	swpstk(t_stk *stk)
 {
@@ -22,6 +27,10 @@ void	swpstk(t_stk *stk)
 		buf->next = stk->frst->next;
 		stk->frst->next = buf;
 		ft_printf("s%c\n", stk->name);
+		if (stk->name == 'a')
+			addoutput(stk, "sa");
+		if (stk->name == 'b')
+			addoutput(stk, "sb");
 	}
 }
 
@@ -41,7 +50,10 @@ void	pshstk(t_stk *A, t_stk *B)
 			A->last = (void *)0;
 		A->size--;
 		B->size++;
-		ft_printf("p%c\n", B->name);
+		if (B->name == 'a')
+			addoutput(B, "pa");
+		if (B->name == 'b')
+			addoutput(B, "pb");
 	}
 }
 
@@ -53,7 +65,10 @@ void	rotstk(t_stk *stk)
 		stk->last = stk->frst;
 		stk->frst = stk->frst->next;
 		stk->last->next = (void *)0;
-		ft_printf("r%c\n", stk->name);
+		if (stk->name == 'a')
+			addoutput(stk, "ra");
+		if (stk->name == 'b')
+			addoutput(stk, "rb");
 	}
 }
 
@@ -70,6 +85,9 @@ void	rrtstk(t_stk *stk)
 		stk->frst = buf->next;
 		buf->next = (void *)0;
 		stk->last = buf;
-		ft_printf("rr%c\n", stk->name);
+		if (stk->name == 'a')
+			addoutput(stk, "rra");
+		if (stk->name == 'b')
+			addoutput(stk, "rrb");
 	}
 }
