@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:49:14 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/14 18:54:47 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/14 19:02:05 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -37,8 +37,8 @@ void			bmrgtimsort(t_stk *a);
 void			lstdel_last(t_list **lst);
 int				swtelem(t_stk *a, t_list *elem);
 void			smartrot(t_stk *stk, int moves);
-void			quicksortab(t_stk *a, t_stk *b, int blcksz, int iter);
-void			quicksortba(t_stk *a, t_stk *b, int blcksz, int iter);
+void			quicksortab(t_stk *a, t_stk *b, int blcksz);
+void			quicksortba(t_stk *a, t_stk *b, int blcksz);
 unsigned int	ft_abs(int n);
 char			ablckissorted(t_stk *a, int blcksz);
 char			bblckissorted(t_stk *b, int blcksz);

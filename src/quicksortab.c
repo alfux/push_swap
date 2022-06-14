@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 02:28:56 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/14 18:54:29 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/14 19:01:34 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -87,7 +87,7 @@ static void	pshsubmed(t_stk *a, t_stk *b, int blcksz)
 	smartrot(a, swtelem(a, first));
 }
 
-void	quicksortab(t_stk *a, t_stk *b, int blcksz, int iter)
+void	quicksortab(t_stk *a, t_stk *b, int blcksz)
 {
 	int	i;
 
@@ -95,9 +95,9 @@ void	quicksortab(t_stk *a, t_stk *b, int blcksz, int iter)
 	if (!ablckissorted(a, blcksz))
 	{
 		pshsubmed(a, b, blcksz);
-		quicksortab(a, b, blcksz - (blcksz / 2), iter);
+		quicksortab(a, b, blcksz - (blcksz / 2));
 		if (!bblckissorted(b, blcksz / 2))
-			quicksortba(a, b, blcksz / 2, iter);
+			quicksortba(a, b, blcksz / 2);
 		while (i++ < blcksz / 2)
 			pshstk(b, a);
 	}
