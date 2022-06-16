@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:49:14 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/14 19:46:23 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/16 05:53:15 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -17,7 +17,7 @@ struct					s_stk
 {
 	t_list	*frst;
 	t_list	*last;
-	size_t	size;
+	int		size;
 	char	name;
 	int		lrg;
 	int		sml;
@@ -43,4 +43,7 @@ void			quicksortba(t_stk *a, t_stk *b, int blcksz);
 unsigned int	ft_abs(int n);
 char			ablckissorted(t_stk *a, int blcksz);
 char			bblckissorted(t_stk *b, int blcksz);
+void			aswp(t_stk *a);
+void			bswp(t_stk *b);
+void			clnoutput(t_list **output);
 #endif

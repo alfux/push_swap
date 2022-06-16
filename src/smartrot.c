@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   triradix.c                                         :+:      :+:    :+:   */
+/*   smartrot.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:16:10 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/14 18:40:01 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/16 04:44:40 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -23,7 +23,7 @@ int	swtelem(t_stk *a, t_list *elem)
 		first++;
 		buf = buf->next;
 	}
-	if ((size_t)first < a->size - first)
+	if (first < a->size - first)
 		return (first);
 	return (first - a->size);
 }

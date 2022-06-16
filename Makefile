@@ -6,7 +6,7 @@
 #    By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 13:51:31 by afuchs            #+#    #+#              #
-#    Updated: 2022/06/14 18:48:22 by afuchs           ###   ########.fr        #
+#    Updated: 2022/06/16 02:14:37 by afuchs           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ LPATH	= libft/
 HPATH	= header/
 
 SRC		=	main.c operation.c checkint.c issorted.c timsort.c smartrot.c	\
-			lstdel_last.c quicksortab.c quicksortba.c ft_abs.c				\
+			lstdel_last.c quicksortab.c quicksortba.c ft_abs.c cleanout.c	\
+			smartswap.c														\
 
 OBJ		= $(SRC:%.c=$(OPATH)%.o)
 
