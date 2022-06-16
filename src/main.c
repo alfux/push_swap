@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/16 06:10:28 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/16 22:28:03 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -63,7 +63,7 @@ static int	*getints(int argc, char **argv)
 	return (tab);
 }
 
-static t_stk	*getstk(int size, int *tab)
+t_stk	*getstk(int size, int *tab)
 {
 	int		i;
 	t_stk	*stk;
@@ -89,7 +89,7 @@ static t_stk	*getstk(int size, int *tab)
 	return (stk);
 }
 
-static void	clrstk(t_stk *stk)
+void	clrstk(t_stk *stk)
 {
 	ft_lstclear(&stk->frst, (void *)0);
 	ft_lstclear(stk->output, &free);
@@ -99,10 +99,8 @@ static void	clrstk(t_stk *stk)
 
 int	main(int argc, char **argv)
 {
-	int				*tab;
-	t_stk			*a;
-	t_stk			*b;
-	static t_list	*output;
+	int		*tab;
+	t_list	*output;
 
 	if (argc <= 2)
 		return (1);
@@ -111,18 +109,7 @@ int	main(int argc, char **argv)
 	tab = getints(argc, argv);
 	if (!tab)
 		return (ft_printf("Error\n"));
-	a = getstk(argc - 1, tab);
-	b = ft_calloc(1, sizeof (t_stk));
-	b->name = 'b';
-	if (!a || !b)
-		return (ft_printf("Error\n"));
-	a->output = &output;
-	b->output = &output;
-	quicksortab(a, b, a->size);
-	clnoutput(a->output);
-	printoutput(*a->output);
-	clrstk(a);
-	clrstk(b);
-	free(tab);
+	output = bestoutput(argc - 1, tab);
+	printoutput(output);
 	return (0);
 }
