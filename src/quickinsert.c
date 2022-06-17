@@ -6,11 +6,11 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 15:52:02 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/17 20:54:03 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/17 21:13:18 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
-//Maybe adjust with median
+
 static int	swtinsert(t_stk *a, t_list *elem)
 {
 	t_list	*buf;
@@ -64,7 +64,7 @@ static void	cheapest(t_stk *a, t_stk *b)
 	t_list	*buf;
 	int		bf[2];
 	int		chp[2];
-	size_t		moves;
+	size_t	moves;
 
 	buf = b->frst;
 	bf[0] = 0;

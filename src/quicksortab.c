@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 02:28:56 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/17 19:26:26 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/17 21:13:51 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -85,9 +85,9 @@ static void	pshsubmed(t_stk *a, t_stk *b, int blcksz)
 	while (submed)
 	{
 		smartrot(a, moves);
-	//	aswp(a);
+		aswp(a);
 		pshstk(a, b);
-	//	bswp(b);
+		bswp(b);
 		submed = clstsub(a, med, &moves);
 	}
 	smartrot(a, swtelem(a, first));

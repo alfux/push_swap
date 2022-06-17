@@ -6,11 +6,11 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/17 19:09:22 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/17 21:27:48 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
-
+/*
 void	printstk(t_stk *stk)
 {
 	t_list	*buf;
@@ -25,8 +25,8 @@ void	printstk(t_stk *stk)
 	}
 	ft_printf("\n---------------------------------------------------------\n");
 }
-
-static void	printoutput(t_list *output, char rev)
+*/
+void	printoutput(t_list *output, char rev)
 {
 	if (rev)
 	{
@@ -111,7 +111,6 @@ void	clrstk(t_stk *stk)
 int	main(int argc, char **argv)
 {
 	int		*tab;
-	t_list	*output;
 	t_stk	*a;
 	t_stk	*b;
 
@@ -125,13 +124,6 @@ int	main(int argc, char **argv)
 	b->name = 'b';
 	if (!tab)
 		return (ft_printf("Error\n"));
-	a->output = &output;
-	b->output = &output;
-	quickinsert(a, b, a->size);
-	//output = bestoutput(argc - 1, tab);
-	clnoutput(&output);
-	printoutput(output, 0);
-	ft_lstclear(&output, &free);
-	free(tab);
+	choose(a, b, tab);
 	return (0);
 }

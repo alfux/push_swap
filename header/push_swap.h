@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:49:14 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/17 20:34:55 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/17 21:28:24 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -60,4 +60,6 @@ void			clrstk(t_stk *stk);
 t_stk			*getstk(int size, int *tab);
 t_list			*bestoutput(int size, int *tab);
 void			quickinsert(t_stk *a, t_stk *b, int blcksz);
+void			printoutput(t_list *output, char rev);
+void			choose(t_stk *a, t_stk *b, int *tab);
 #endif
