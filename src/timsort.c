@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:19:11 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/01 02:20:02 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/17 18:54:44 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -31,7 +31,7 @@ static void	shortcycle(t_stk *a)
 			rrtstk(a);
 }
 
-static char	iscyclesort(t_stk *a)
+char	iscyclesort(t_stk *a)
 {
 	t_list	*buf;
 

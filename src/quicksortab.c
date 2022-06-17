@@ -6,19 +6,21 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 02:28:56 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/16 06:23:02 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/17 19:26:26 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-static int	nsub(t_stk *a, t_list *elem)
+static int	nsub(t_stk *a, t_list *elem, int blcksz)
 {
 	t_list	*buf;
 	int		n;
+	int		i;
 
 	buf = a->frst;
 	n = 0;
-	while (buf && elem)
+	i = 0;
+	while (buf && elem && i++ < blcksz)
 	{
 		if (*(int *)buf->content < *(int *)elem->content)
 			n++;
@@ -30,9 +32,11 @@ static int	nsub(t_stk *a, t_list *elem)
 static t_list	*median(t_stk *a, int blcksz)
 {
 	t_list	*buf;
+	int		i;
 
 	buf = a->frst;
-	while (buf && nsub(a, buf) != blcksz / 2)
+	i = 0;
+	while (buf && i++ < blcksz && nsub(a, buf, blcksz) != blcksz / 2)
 		buf = buf->next;
 	return (buf);
 }
@@ -81,9 +85,9 @@ static void	pshsubmed(t_stk *a, t_stk *b, int blcksz)
 	while (submed)
 	{
 		smartrot(a, moves);
-		aswp(a);
+	//	aswp(a);
 		pshstk(a, b);
-		bswp(b);
+	//	bswp(b);
 		submed = clstsub(a, med, &moves);
 	}
 	smartrot(a, swtelem(a, first));

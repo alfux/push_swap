@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/17 04:23:18 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/17 19:09:22 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -26,13 +26,24 @@ void	printstk(t_stk *stk)
 	ft_printf("\n---------------------------------------------------------\n");
 }
 
-static void	printoutput(t_list *output)
+static void	printoutput(t_list *output, char rev)
 {
-	if (!output)
-		return ;
-	if (output->next)
-		printoutput(output->next);
-	ft_printf("%s\n", (char *)output->content);
+	if (rev)
+	{
+		if (!output)
+			return ;
+		if (output->next)
+			printoutput(output->next, rev);
+		ft_printf("%s\n", (char *)output->content);
+	}
+	else
+	{
+		if (!output)
+			return ;
+		ft_printf("%s\n", (char *)output->content);
+		if (output->next)
+			printoutput(output->next, rev);
+	}
 }
 
 static int	*getints(int argc, char **argv)
@@ -101,16 +112,25 @@ int	main(int argc, char **argv)
 {
 	int		*tab;
 	t_list	*output;
+	t_stk	*a;
+	t_stk	*b;
 
 	if (argc < 2)
 		return (1);
 	if (!checkint(argc, argv))
 		return (ft_printf("Error\n"));
 	tab = getints(argc, argv);
+	a = getstk(argc - 1, tab);
+	b = ft_calloc(1, sizeof (t_stk));
+	b->name = 'b';
 	if (!tab)
 		return (ft_printf("Error\n"));
-	output = bestoutput(argc - 1, tab);
-	printoutput(output);
+	a->output = &output;
+	b->output = &output;
+	quickinsert(a, b, a->size);
+	//output = bestoutput(argc - 1, tab);
+	clnoutput(&output);
+	printoutput(output, 0);
 	ft_lstclear(&output, &free);
 	free(tab);
 	return (0);

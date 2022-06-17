@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:49:14 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/17 04:06:17 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/17 20:34:55 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -38,11 +38,14 @@ void			bmrgtimsort(t_stk *a);
 void			lstdel_last(t_list **lst);
 int				swtelem(t_stk *a, t_list *elem);
 void			smartrot(t_stk *stk, int moves);
+void			smartrr(t_stk *a, t_stk *b, int ia, int ib);
+int				pshbetween(t_stk *a, t_stk *b, int blcksz, int prev);
 void			quicksortab(t_stk *a, t_stk *b, int blcksz);
 void			quicksortba(t_stk *a, t_stk *b, int blcksz);
 unsigned int	ft_abs(int n);
 char			ablckissorted(t_stk *a, int blcksz);
 char			bblckissorted(t_stk *b, int blcksz);
+char			iscyclesort(t_stk *a);
 void			aswp(t_stk *a);
 void			bswp(t_stk *b);
 void			clnoutput(t_list **output);
@@ -56,4 +59,5 @@ char			tryout(t_list *output, t_stk *a, t_stk *b);
 void			clrstk(t_stk *stk);
 t_stk			*getstk(int size, int *tab);
 t_list			*bestoutput(int size, int *tab);
+void			quickinsert(t_stk *a, t_stk *b, int blcksz);
 #endif

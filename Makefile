@@ -6,7 +6,7 @@
 #    By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 13:51:31 by afuchs            #+#    #+#              #
-#    Updated: 2022/06/17 04:06:33 by afuchs           ###   ########.fr        #
+#    Updated: 2022/06/17 20:42:44 by afuchs           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ HPATH	= header/
 
 SRC		=	main.c operation.c checkint.c issorted.c timsort.c smartrot.c	\
 			lstdel_last.c quicksortab.c quicksortba.c ft_abs.c cleanout.c	\
-			smartswap.c tryout.c bruteforce.c								\
+			smartswap.c tryout.c bruteforce.c quickinsert.c pshbetween.c	\
 
 OBJ		= $(SRC:%.c=$(OPATH)%.o)
 
