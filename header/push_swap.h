@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:49:14 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/16 22:18:43 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/17 04:06:17 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -25,10 +25,10 @@ struct					s_stk
 };
 typedef struct s_stk	t_stk;
 
-void			swpstk(t_stk *stk);
-void			pshstk(t_stk *A, t_stk *B);
-void			rotstk(t_stk *stk);
-void			rrtstk(t_stk *stk);
+char			swpstk(t_stk *stk);
+char			pshstk(t_stk *A, t_stk *B);
+char			rotstk(t_stk *stk);
+char			rrtstk(t_stk *stk);
 char			checkint(int argc, char **argv);
 char			aissorted(t_stk *a);
 char			bissorted(t_stk *b);
@@ -47,7 +47,13 @@ void			aswp(t_stk *a);
 void			bswp(t_stk *b);
 void			clnoutput(t_list **output);
 void			addoutput(t_list **output, char *str);
+char			ss(t_stk *a, t_stk *b);
+char			rr(t_stk *a, t_stk *b);
+char			rrr(t_stk *a, t_stk *b);
+char			op(t_stk *a, t_stk *b, char *str);
+char			revop(t_stk *a, t_stk *b, char *str);
 char			tryout(t_list *output, t_stk *a, t_stk *b);
 void			clrstk(t_stk *stk);
 t_stk			*getstk(int size, int *tab);
+t_list			*bestoutput(int size, int *tab);
 #endif

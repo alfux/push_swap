@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 14:26:46 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/16 06:07:39 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/17 04:16:24 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -20,7 +20,7 @@ void	aswp(t_stk *a)
 
 void	bswp(t_stk *b)
 {
-	if (b && b->frst && b->frst->next 
+	if (b && b->frst && b->frst->next
 		&& *(int *)b->frst->next->content > *(int *)b->frst->content)
 		swpstk(b);
 }

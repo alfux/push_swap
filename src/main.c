@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/16 22:28:03 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/17 04:23:18 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -28,11 +28,11 @@ void	printstk(t_stk *stk)
 
 static void	printoutput(t_list *output)
 {
-	while (output)
-	{
-		ft_printf("%s\n", (char *)output->content);
-		output = output->next;
-	}
+	if (!output)
+		return ;
+	if (output->next)
+		printoutput(output->next);
+	ft_printf("%s\n", (char *)output->content);
 }
 
 static int	*getints(int argc, char **argv)
@@ -102,7 +102,7 @@ int	main(int argc, char **argv)
 	int		*tab;
 	t_list	*output;
 
-	if (argc <= 2)
+	if (argc < 2)
 		return (1);
 	if (!checkint(argc, argv))
 		return (ft_printf("Error\n"));
@@ -111,5 +111,7 @@ int	main(int argc, char **argv)
 		return (ft_printf("Error\n"));
 	output = bestoutput(argc - 1, tab);
 	printoutput(output);
+	ft_lstclear(&output, &free);
+	free(tab);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 13:41:54 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/16 21:34:26 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/17 02:46:18 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -17,7 +17,7 @@ void	addoutput(t_list **output, char *str)
 		ft_lstadd_back(output, ft_lstnew(ft_strdup(str)));
 }
 
-void	swpstk(t_stk *stk)
+char	swpstk(t_stk *stk)
 {
 	t_list	*buf;
 
@@ -33,10 +33,12 @@ void	swpstk(t_stk *stk)
 			addoutput(stk->output, "sa");
 		if (stk->name == 'b')
 			addoutput(stk->output, "sb");
+		return (1);
 	}
+	return (0);
 }
 
-void	pshstk(t_stk *A, t_stk *B)
+char	pshstk(t_stk *A, t_stk *B)
 {
 	t_list	*buf;
 
@@ -56,10 +58,12 @@ void	pshstk(t_stk *A, t_stk *B)
 			addoutput(B->output, "pa");
 		if (B->name == 'b')
 			addoutput(B->output, "pb");
+		return (1);
 	}
+	return (0);
 }
 
-void	rotstk(t_stk *stk)
+char	rotstk(t_stk *stk)
 {
 	if (stk && stk->frst && stk->frst->next)
 	{
@@ -71,10 +75,12 @@ void	rotstk(t_stk *stk)
 			addoutput(stk->output, "ra");
 		if (stk->name == 'b')
 			addoutput(stk->output, "rb");
+		return (1);
 	}
+	return (0);
 }
 
-void	rrtstk(t_stk *stk)
+char	rrtstk(t_stk *stk)
 {
 	t_list	*buf;
 
@@ -91,5 +97,7 @@ void	rrtstk(t_stk *stk)
 			addoutput(stk->output, "rra");
 		if (stk->name == 'b')
 			addoutput(stk->output, "rrb");
+		return (1);
 	}
+	return (0);
 }
