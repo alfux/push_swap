@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 21:18:37 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/17 21:49:53 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/20 00:55:12 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -19,7 +19,7 @@ void	choose(t_stk *a, t_stk *b, int *tab)
 	if (a->size > 6)
 	{
 		a->output = &output;
-		a->output = &output;
+		b->output = &output;
 		quickinsert(a, b, a->size);
 		clnoutput(&output);
 		printoutput(output, 0);

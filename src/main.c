@@ -6,11 +6,11 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/17 21:45:11 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/20 00:21:05 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
-
+/*
 void	printstk(t_stk *stk)
 {
 	t_list	*buf;
@@ -25,7 +25,7 @@ void	printstk(t_stk *stk)
 	}
 	ft_printf("\n---------------------------------------------------------\n");
 }
-
+*/
 void	printoutput(t_list *output, char rev)
 {
 	if (rev)
@@ -82,13 +82,16 @@ t_stk	*getstk(int size, int *tab)
 	i = -1;
 	stk = ft_calloc(1, sizeof (t_stk));
 	if (!stk)
-	{
-		free(tab);
 		return (stk);
-	}
 	while (++i < size)
 	{
 		stk->last = ft_lstnew((int *)(tab + i));
+		if (!stk->last)
+		{
+			ft_lstclear(&stk->frst, (void *)0);
+			free(stk);
+			return ((t_stk *)0);
+		}
 		ft_lstadd_back(&stk->frst, stk->last);
 		if (!i || *(int *)stk->last->content < stk->sml)
 			stk->sml = *(int *)stk->last->content;
@@ -116,15 +119,23 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (1);
-	//CHERCHER LES DOUBLONS
 	if (!checkint(argc, argv))
 		return (ft_printf("Error\n"));
 	tab = getints(argc, argv);
-	a = getstk(argc - 1, tab);
-	b = ft_calloc(1, sizeof (t_stk));
-	b->name = 'b';
 	if (!tab)
 		return (ft_printf("Error\n"));
+	a = getstk(argc - 1, tab);
+	b = ft_calloc(1, sizeof (t_stk));
+	if (!a || !b)
+	{
+		if (a)
+			clrstk(a);
+		if (b)
+			clrstk(b);
+		free(tab);
+		return (ft_printf("Error\n"));
+	}
+	b->name = 'b';
 	choose(a, b, tab);
 	return (0);
 }
