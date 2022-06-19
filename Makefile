@@ -6,7 +6,7 @@
 #    By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 13:51:31 by afuchs            #+#    #+#              #
-#    Updated: 2022/06/20 00:54:39 by afuchs           ###   ########.fr        #
+#    Updated: 2022/06/20 01:13:16 by afuchs           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,9 @@ LPATH	= libft/
 
 HPATH	= header/
 
-SRC		=	main.c operation.c checkint.c issorted.c timsort.c smartrot.c	\
+SRC		=	main.c operation.c checkint.c issorted.c smartrot.c				\
 			lstdel_last.c ft_abs.c cleanout.c tryout.c bruteforce.c			\
-			quickinsert.c pshbetween.c										\
-			choose.c														\
+			quickinsert.c pshbetween.c iscyclesort.c choose.c				\
 
 OBJ		= $(SRC:%.c=$(OPATH)%.o)
 
