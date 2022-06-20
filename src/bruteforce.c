@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 22:21:03 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/17 04:22:02 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/20 14:40:51 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -53,7 +53,8 @@ char	revop(t_stk *a, t_stk *b, char *str)
 		return (rrtstk(a));
 	else if (*str == 'r' && *(str + 1) == 'b')
 		return (rrtstk(b));
-	else if (*str == 'r' && *(str + 1) == 'r' && !*(str + 2))
+	else if (*str == 'r' && *(str + 1) == 'r'
+		&& (!*(str + 2) || *(str + 2) == '\n'))
 		return (rrr(a, b));
 	else if (*str == 'r' && *(str + 1) == 'r' && *(str + 2) == 'a')
 		return (rotstk(a));
@@ -112,7 +113,6 @@ t_list	*bestoutput(int size, int *tab)
 	i = 0;
 	while (*(ops + i))
 		free(*(ops + i++));
-	free(*(ops + i));
 	free(ops);
 	clrstk(a);
 	clrstk(b);

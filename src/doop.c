@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tryout.c                                           :+:      :+:    :+:   */
+/*   doop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 21:08:02 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/17 04:18:36 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/20 17:03:06 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -28,44 +28,28 @@ char	rrr(t_stk *a, t_stk *b)
 
 char	op(t_stk *a, t_stk *b, char *str)
 {
-	if (*str == 's' && *(str + 1) == 'a')
+	if (!ft_strncmp(str, "sa", 4) || !ft_strncmp(str, "sa\n", 4))
 		return (swpstk(a));
-	else if (*str == 's' && *(str + 1) == 'b')
+	else if (!ft_strncmp(str, "sb", 4) || !ft_strncmp(str, "sb\n", 4))
 		return (swpstk(b));
-	else if (*str == 's' && *(str + 1) == 's')
+	else if (!ft_strncmp(str, "ss", 4) || !ft_strncmp(str, "ss\n", 4))
 		return (ss(a, b));
-	else if (*str == 'p' && *(str + 1) == 'a')
+	else if (!ft_strncmp(str, "pa", 4) || !ft_strncmp(str, "pa\n", 4))
 		return (pshstk(b, a));
-	else if (*str == 'p' && *(str + 1) == 'b')
+	else if (!ft_strncmp(str, "pb", 4) || !ft_strncmp(str, "pb\n", 4))
 		return (pshstk(a, b));
-	else if (*str == 'r' && *(str + 1) == 'a')
+	else if (!ft_strncmp(str, "ra", 4) || !ft_strncmp(str, "ra\n", 4))
 		return (rotstk(a));
-	else if (*str == 'r' && *(str + 1) == 'b')
+	else if (!ft_strncmp(str, "rb", 4) || !ft_strncmp(str, "rb\n", 4))
 		return (rotstk(b));
-	else if (*str == 'r' && *(str + 1) == 'r' && !*(str + 2))
+	else if (!ft_strncmp(str, "rr", 4) || !ft_strncmp(str, "rr\n", 4))
 		return (rr(a, b));
-	else if (*str == 'r' && *(str + 1) == 'r' && *(str + 2) == 'a')
+	else if (!ft_strncmp(str, "rra", 4) || !ft_strncmp(str, "rra\n", 4))
 		return (rrtstk(a));
-	else if (*str == 'r' && *(str + 1) == 'r' && *(str + 2) == 'b')
+	else if (!ft_strncmp(str, "rrb", 4) || !ft_strncmp(str, "rrb\n", 4))
 		return (rrtstk(b));
-	else if (*str == 'r' && *(str + 1) == 'r' && *(str + 2) == 'r')
+	else if (!ft_strncmp(str, "rrr", 4) || !ft_strncmp(str, "rrr\n", 4))
 		return (rrr(a, b));
 	else
-		return (0);
-}
-
-char	tryout(t_list *output, t_stk *a, t_stk *b)
-{
-	t_list	*buf;
-
-	buf = output;
-	while (buf && a && b)
-	{
-		op(a, b, (char *)buf->content);
-		buf = buf->next;
-	}
-	if (aissorted(a) && !b->size)
-		return (1);
-	else
-		return (0);
+		return (-1);
 }
