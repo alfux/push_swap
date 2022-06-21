@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 13:47:27 by afuchs            #+#    #+#             */
-/*   Updated: 2022/05/23 14:56:58 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/21 17:28:43 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -28,6 +28,9 @@ static char	isinteger(char *str)
 
 	if (!ft_isdigit(*str) && *str != '-' && *str != '+')
 		return (0);
+	else if (*str == '-' || *str == '+')
+		if (!ft_isdigit(*(str + 1)))
+			return (0);
 	i = 0;
 	while (*(str + ++i))
 		if (!ft_isdigit(*(str + i)))
