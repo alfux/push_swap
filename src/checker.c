@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/20 17:06:58 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/21 13:35:03 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -32,7 +32,10 @@ static int	checker(t_stk *a, t_stk *b, int *tab)
 	while (str)
 	{
 		if (ft_strlen(str) > 0 && *(str + ft_strlen(str) - 1) != '\n')
+		{
+			free(str);
 			return (clrall(a, b, tab) + errmsg());
+		}
 		if (op(a, b, str) == -1)
 		{
 			free(str);
