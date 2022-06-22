@@ -6,7 +6,7 @@
 /*   By: afuchs <afuchs@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 15:52:02 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/17 21:13:18 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/22 16:27:05 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -104,22 +104,22 @@ static t_list	*findlargest(t_stk *b)
 	return (largest);
 }
 
-void	quickinsert(t_stk *a, t_stk *b, int blcksz)
+int	*quickinsert(t_stk *a, t_stk *b, int blcksz)
 {
 	t_list		*lrgst;
 	static int	prev;
 	static int	firstcall;
 
 	if (aissorted(a))
-		return ;
+		return (&firstcall);
 	if (!firstcall)
 	{
 		firstcall++;
 		prev = pshbetween(a, b, blcksz, a->sml);
+		pshstk(b, a);
 	}
 	else
 		prev = pshbetween(a, b, blcksz, prev);
-	lrgst = findlargest(b);
 	while (b->size)
 	{
 		cheapest(a, b);
@@ -130,5 +130,5 @@ void	quickinsert(t_stk *a, t_stk *b, int blcksz)
 		lrgst = findlargest(a);
 		smartrot(a, swtelem(a, lrgst) + 1);
 	}
-	quickinsert(a, b, blcksz - (blcksz / 2));
+	return (quickinsert(a, b, blcksz - (blcksz / 2)));
 }
