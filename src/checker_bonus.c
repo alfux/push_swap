@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/21 13:35:03 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/22 12:51:23 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -50,34 +50,6 @@ static int	checker(t_stk *a, t_stk *b, int *tab)
 	return (clrall(a, b, tab) + ft_printf("\033[31mKO\033[0m\n"));
 }
 
-static int	*getints(int argc, char **argv)
-{
-	int	i;
-	int	j;
-	int	*tab;
-
-	tab = ft_calloc(argc - 1, sizeof (int));
-	if (!tab)
-		return (tab);
-	i = 0;
-	while (i < argc - 1)
-	{
-		*(tab + i) = ft_atoi(*(argv + i + 1));
-		j = 0;
-		while (j < i)
-		{
-			if (*(tab + j) == *(tab + i))
-			{
-				free(tab);
-				return ((void *)0);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (tab);
-}
-
 int	main(int argc, char **argv)
 {
 	int		*tab;
@@ -88,7 +60,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!checkint(argc, argv))
 		return (errmsg());
-	tab = getints(argc, argv);
+	tab = getints(&argc, argv + 1);
 	if (!tab)
 		return (errmsg());
 	a = getstk(argc - 1, tab);

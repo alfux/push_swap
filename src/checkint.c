@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 13:47:27 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/21 17:28:43 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/22 13:15:43 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -45,9 +45,26 @@ static char	isinteger(char *str)
 
 char	checkint(int argc, char **argv)
 {
-	int	i;
+	int		i;
+	char	ret;
+	char	**spl;
 
 	i = 0;
+	ret = 1;
+	if (argc == 2)
+	{
+		spl = ft_split(*(argv + 1), ' ');
+		if (!*spl)
+			return (0);
+		while (*(spl + i))
+			if (!isinteger(*(spl + i++)))
+				ret = 0;
+		i = 0;
+		while (*(spl + i))
+			free(*(spl + i++));
+		free(spl);
+		return (ret);
+	}
 	while (++i < argc)
 		if (!isinteger(*(argv + i)))
 			return (0);
