@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 13:47:27 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/22 16:39:19 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/23 21:14:14 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -22,6 +22,23 @@ static char	isinbound(char *str)
 	return (1);
 }
 
+static int	realdigit(char *str, int *ei)
+{
+	int	i;
+	int	n;
+
+	i = 0;
+	n = 0;
+	while (*(str + i) == '+' || *(str + i) == '-' || *(str + i) == '0')
+		i++;
+	if (!*(str + i))
+		return (0);
+	while (*(str + i + n))
+		n++;
+	*ei = i;
+	return (n);
+}
+
 static char	isinteger(char *str)
 {
 	int	i;
@@ -35,10 +52,10 @@ static char	isinteger(char *str)
 	while (*(str + ++i))
 		if (!ft_isdigit(*(str + i)))
 			return (0);
-	if (i > 10 + !ft_isdigit(*str))
+	if (realdigit(str, &i) > 10 + !ft_isdigit(*str))
 		return (0);
-	else if (i == 10 + !ft_isdigit(*str))
-		return (isinbound(str));
+	else if (realdigit(str, &i) == 10 + !ft_isdigit(*str))
+		return (isinbound(str + i));
 	else
 		return (1);
 }
