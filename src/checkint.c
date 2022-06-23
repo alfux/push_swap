@@ -6,18 +6,18 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 13:47:27 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/23 21:14:14 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/23 22:07:31 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-static char	isinbound(char *str)
+static char	isinbound(char *str, char c)
 {
-	if (*str == '-' && ft_strncmp("-2147483648", str, 11) < 0)
+	if (c == '-' && ft_strncmp("2147483648", str, 10) < 0)
 		return (0);
-	else if (*str == '+' && ft_strncmp("+2147483647", str, 11) < 0)
+	else if (c == '+' && ft_strncmp("2147483647", str, 10) < 0)
 		return (0);
-	else if (ft_strncmp("2147483647", str, 10) < 0)
+	else if (c != '-' && ft_strncmp("2147483647", str, 10) < 0)
 		return (0);
 	return (1);
 }
@@ -34,6 +34,8 @@ static int	realdigit(char *str, int *ei)
 	if (!*(str + i))
 		return (0);
 	while (*(str + i + n))
+		n++;
+	if (*str == '+' || *str == '-')
 		n++;
 	*ei = i;
 	return (n);
@@ -55,7 +57,7 @@ static char	isinteger(char *str)
 	if (realdigit(str, &i) > 10 + !ft_isdigit(*str))
 		return (0);
 	else if (realdigit(str, &i) == 10 + !ft_isdigit(*str))
-		return (isinbound(str + i));
+		return (isinbound(str + i, *str));
 	else
 		return (1);
 }
