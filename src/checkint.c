@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 13:47:27 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/23 22:07:31 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/24 02:09:13 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -84,6 +84,8 @@ char	checkint(int argc, char **argv)
 	if (argc == 2)
 	{
 		spl = ft_split(*(argv + 1), ' ');
+		if (!spl)
+			return (0);
 		if (!*spl)
 			return (freespl(spl));
 		while (*(spl + i))

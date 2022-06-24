@@ -6,7 +6,7 @@
 /*   By: afuchs <alexis.t.fuchs@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 13:46:30 by afuchs            #+#    #+#             */
-/*   Updated: 2022/06/22 13:05:51 by afuchs           ###   ########.fr       */
+/*   Updated: 2022/06/24 02:12:37 by afuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -18,6 +18,8 @@ static int	*splitargv(int *argc, char *str)
 	int		*tab;
 
 	spl = ft_split(str, ' ');
+	if (!spl)
+		return ((int *)0);
 	size = 0;
 	while (*(spl + size))
 		size++;
